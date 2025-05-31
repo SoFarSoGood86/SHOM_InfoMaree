@@ -1,0 +1,11 @@
+{
+  "domain": "shom_infomaree",
+  "name": "SHOM InfoMarée",
+  "version": "1.0.0",
+  "documentation": "https://github.com/votre-utilisateur/SHOM_InfoMaree",
+  "dependencies": [],
+  "codeowners": ["@votre-utilisateur"],
+  "requirements": [],
+  "iot_class": "cloud_polling"
+  "config_flow": true
+}

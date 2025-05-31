@@ -1,0 +1,11 @@
+{
+    "config": {
+      "step": {
+        "user": {
+          "title": "Configurer SHOM InfoMarée",
+          "description": "Entrez votre clé API SHOM et l'ID de la station."
+        }
+      }
+    }
+  }
+  
