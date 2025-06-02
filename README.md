@@ -1,48 +1,107 @@
-# SHOM_InfoMarée
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Orange_logo.svg" alt="Orange Logo" width="150"/>
+</p>
 
-Intégration personnalisée Home Assistant pour récupérer les horaires de marée depuis le site officiel du SHOM via une API.
+# Orange UHD TV - Intégration Home Assistant
 
-## 🧭 Fonctionnalités
+![hacs badge](https://img.shields.io/badge/HACS-Custom-orange.svg)
 
-- Affiche la prochaine marée (haute ou basse)
-- Heure et hauteur de la marée
-- Compatible avec l’interface graphique Home Assistant
-- Rafraîchissement automatique des données
+Cette intégration permet de **contrôler un décodeur TV UHD d'Orange** directement depuis Home Assistant via le panneau `media_player`.
 
-## 🔧 Installation
+---
 
-### Méthode 1 : via HACS (recommandée)
+## 🔧 Fonctionnalités
 
-1. Dans HACS, ajoutez ce dépôt comme `Custom repository` de type `Integration`.
-2. Recherchez “SHOM InfoMarée” et installez.
+- Allumer / Éteindre le décodeur
+- Changer de chaîne
+- Contrôler le volume (haut/bas)
+- Envoyer des commandes IR personnalisées (par exemple `KEY_OK`, `KEY_UP`, `KEY_DOWN`)
+- Support de l’intégration via `config_flow` (UI)
+
+---
+
+## 📦 Installation
+
+### 1. Via [HACS](https://hacs.xyz/)
+
+1. Allez dans **HACS > Intégrations > Trois points (⋮) > Dépôts personnalisés**
+2. Ajoutez ce dépôt GitHub :
+
+   ```
+   https://github.com/SoFarSoGood86/homeassistant-orange-uhd-tv
+   ```
+
+   en tant que **Intégration**.
+3. Recherchez `ORANGE UHD TV` dans HACS et installez-la.
+4. Redémarrez Home Assistant.
+5. Ajoutez l'intégration via **Paramètres > Appareils & Services > Ajouter une intégration > ORANGE UHD TV**
+
+---
+
+### 2. Installation manuelle
+
+1. Téléchargez et extrayez ce dépôt.
+2. Copiez le dossier `orange_uhd_tv` dans :
+   ```
+   custom_components/orange_uhd_tv/
+   ```
 3. Redémarrez Home Assistant.
+4. Ajoutez l’intégration depuis l’interface utilisateur.
 
-### Méthode 2 : manuelle
-
-1. Copiez le dossier `shom_infomaree` dans : config/custom_components/shom_infomaree/
-
-2. Redémarrez Home Assistant.
+---
 
 ## ⚙️ Configuration
 
-### Via l’interface
-
-- Paramètres > Appareils & Services > Ajouter une intégration > SHOM InfoMarée
-
-### Paramètres requis
-
-- **Clé API** : obtenue depuis [https://data.shom.fr](https://data.shom.fr)
-- **ID Station** : identifiant numérique d’un port/marégraphe
-- **Nom personnalisé** (facultatif)
-
-## 💡 Exemple d'entité
+L’intégration supporte la configuration via l’interface graphique. Si besoin, voici un exemple YAML (optionnel) :
 
 ```yaml
-sensor.prochaine_maree_a_brest:
-state: "PM"
-attributes:
- heure: "2025-06-01T03:21:00+02:00"
- hauteur: 5.3
- station: "010001"
+media_player:
+  - platform: orange_uhd_tv
+    host: 192.168.1.20
+    token: abcdef123456
+```
 
+> **Remarque** : la connexion dépend de votre méthode de communication (IR, HDMI-CEC, HTTP REST ou autre). Le backend doit être modifié en conséquence.
 
+---
+
+## 🛰️ Services personnalisés
+
+L'intégration fournit un service pour envoyer des commandes spécifiques :
+
+```yaml
+service: orange_uhd_tv.send_command
+data:
+  command: "KEY_OK"
+```
+
+---
+
+## 🚀 Exemple d'automatisation
+
+Allumer le décodeur Orange UHD tous les jours à 19h :
+
+```yaml
+alias: Allumer la TV Orange à 19h
+trigger:
+  - platform: time
+    at: "19:00:00"
+action:
+  - service: media_player.turn_on
+    target:
+      entity_id: media_player.orange_uhd_tv
+```
+
+---
+
+## ❓ Support & Développement
+
+Développé par **[@SoFarSoGood86](https://github.com/SoFarSoGood86)**  
+Pull requests bienvenues !  
+Si vous avez besoin de fonctionnalités supplémentaires (contrôle HDMI-CEC, Wi-Fi, infrarouge via ESPHome, etc.), ouvrez une *issue*.
+
+---
+
+## 📄 Licence
+
+Ce projet est sous licence MIT.

@@ -1,0 +1,11 @@
+{
+  "title": "Décodeur Orange UHD",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configurer le décodeur Orange",
+        "description": "Entrez les détails de votre décodeur"
+      }
+    }
+  }
+}

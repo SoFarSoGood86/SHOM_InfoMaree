@@ -1,11 +1,8 @@
 {
-  "name": "SHOM InfoMaree",
+  "name": "ORANGE UHD TV",
   "content_in_root": false,
-  "domain": "shom_infomaree",
-  "country": "FR",
-  "render_readme": true,
-  "filename": "custom_components/shom_infomaree/manifest.json",
+  "domain": "orange_uhd_tv",
   "zip_release": false,
-  "homeassistant": "2025.0.0",
-  "persistent_directory": "custom_components/shom_infomaree"
+  "filename": "custom_components/orange_uhd_tv/manifest.json",
+  "render_readme": true
 }

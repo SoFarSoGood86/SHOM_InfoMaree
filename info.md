@@ -1,3 +1,2 @@
-# SHOM InfoMarée
-
-Une intégration Home Assistant pour récupérer les horaires de marée depuis l'API SHOM.
+# ORANGE UHD TV
+Intégration Home Assistant pour le contrôle du décodeur TV UHD d'Orange.

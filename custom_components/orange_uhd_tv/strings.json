@@ -1,0 +1,10 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure Orange UHD TV",
+        "description": "Enter your decoder details"
+      }
+    }
+  }
+}

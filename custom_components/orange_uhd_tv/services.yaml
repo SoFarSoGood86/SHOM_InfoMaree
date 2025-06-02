@@ -1,0 +1,7 @@
+send_command:
+  name: Envoyer une commande IR
+  description: Envoie une commande infrarouge au décodeur Orange.
+  fields:
+    command:
+      description: Nom de la commande
+      example: "KEY_OK"
